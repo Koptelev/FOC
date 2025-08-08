@@ -880,6 +880,11 @@ textarea:focus-visible {
     overflow: hidden;
 }
 
+/* Утилиты */
+.hidden {
+    display: none !important;
+}
+
 /* Анимации для карточек возражений */
 .objection-card {
     background: var(--bg-primary);
