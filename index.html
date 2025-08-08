@@ -84,6 +84,26 @@
         </div>
     </main>
 
+    <!-- Модальное окно для деталей функций -->
+    <div id="functionModal" class="fixed inset-0 z-50 hidden">
+        <div class="absolute inset-0 modal-backdrop"></div>
+        <div class="relative h-full flex items-center justify-center p-4">
+            <div class="modal-content-enhanced bg-white max-w-4xl w-full max-h-[90vh] overflow-hidden">
+                <div class="flex items-center justify-between p-6 border-b border-gray-200">
+                    <h2 id="modalTitle" class="text-xl font-semibold text-gray-900">Название функции</h2>
+                    <button id="closeFunctionModal" class="text-gray-400 hover:text-gray-600 text-2xl transition-colors duration-200">&times;</button>
+                </div>
+                <div class="p-6 overflow-y-auto max-h-[calc(90vh-120px)]">
+                    <div id="modalDescription" class="text-gray-700 mb-6 leading-relaxed"></div>
+                    <div class="bg-gray-50 border border-gray-200 rounded-lg p-4">
+                        <h4 class="font-semibold mb-3 text-gray-900">Речевой модуль:</h4>
+                        <div id="modalSpeech" class="text-gray-700 leading-relaxed"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- FAB для быстрого доступа -->
     <button class="fab-enhanced" onclick="window.location.href='./objections.html'">
         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
