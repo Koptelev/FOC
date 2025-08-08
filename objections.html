@@ -52,30 +52,69 @@
     <!-- Основной контент -->
     <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <!-- Статистика -->
-        <div class="grid grid-cols-1 md:grid-cols-6 gap-6 mb-8">
-            <div class="stats-card">
+        <div class="grid grid-cols-1 md:grid-cols-7 gap-6 mb-8">
+            <div class="stats-card cursor-pointer hover:bg-green-50 transition-colors duration-200 relative" onclick="filterByCategory('all')">
+                <h3 class="text-2xl font-bold text-gray-900">Все</h3>
+                <p class="text-gray-600">Возражения</p>
+                <div class="absolute top-2 right-2 text-green-500 opacity-60">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                    </svg>
+                </div>
+            </div>
+            <div class="stats-card cursor-pointer hover:bg-blue-50 transition-colors duration-200 relative" onclick="filterByCategory('secretary')">
                 <h3 class="text-2xl font-bold text-gray-900">11</h3>
                 <p class="text-gray-600">Секретарь</p>
+                <div class="absolute top-2 right-2 text-blue-500 opacity-60">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                    </svg>
+                </div>
             </div>
-            <div class="stats-card">
+            <div class="stats-card cursor-pointer hover:bg-blue-50 transition-colors duration-200 relative" onclick="filterByCategory('price')">
                 <h3 class="text-2xl font-bold text-gray-900">12</h3>
                 <p class="text-gray-600">Цена</p>
+                <div class="absolute top-2 right-2 text-blue-500 opacity-60">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                    </svg>
+                </div>
             </div>
-            <div class="stats-card">
+            <div class="stats-card cursor-pointer hover:bg-blue-50 transition-colors duration-200 relative" onclick="filterByCategory('need')">
                 <h3 class="text-2xl font-bold text-gray-900">16</h3>
                 <p class="text-gray-600">Потребность</p>
+                <div class="absolute top-2 right-2 text-blue-500 opacity-60">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                    </svg>
+                </div>
             </div>
-            <div class="stats-card">
+            <div class="stats-card cursor-pointer hover:bg-blue-50 transition-colors duration-200 relative" onclick="filterByCategory('product')">
                 <h3 class="text-2xl font-bold text-gray-900">14</h3>
                 <p class="text-gray-600">Продукт</p>
+                <div class="absolute top-2 right-2 text-blue-500 opacity-60">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                    </svg>
+                </div>
             </div>
-            <div class="stats-card">
+            <div class="stats-card cursor-pointer hover:bg-blue-50 transition-colors duration-200 relative" onclick="filterByCategory('competitor')">
                 <h3 class="text-2xl font-bold text-gray-900">10</h3>
                 <p class="text-gray-600">Конкуренты</p>
+                <div class="absolute top-2 right-2 text-blue-500 opacity-60">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                    </svg>
+                </div>
             </div>
-            <div class="stats-card">
+            <div class="stats-card cursor-pointer hover:bg-blue-50 transition-colors duration-200 relative" onclick="filterByCategory('renewal')">
                 <h3 class="text-2xl font-bold text-gray-900">9</h3>
                 <p class="text-gray-600">Продление</p>
+                <div class="absolute top-2 right-2 text-blue-500 opacity-60">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                    </svg>
+                </div>
             </div>
         </div>
 
