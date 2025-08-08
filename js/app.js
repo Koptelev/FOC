@@ -925,7 +925,7 @@ function renderFunctions() {
         
         return `
             <div class="function-card group cursor-pointer hover-lift" 
-                 onclick="showFunctionDetail('${func.title}')"
+                 onclick="showFunctionDetail('${func.title.replace(/'/g, "\\'")}')"
                  data-category="${func.category}">
                 
                 <!-- Заголовок -->
@@ -960,13 +960,51 @@ function renderFunctions() {
 
 // Показать детали функции
 function showFunctionDetail(title) {
+    console.log('showFunctionDetail called with title:', title);
+    
     const func = functionsData.find(f => f.title === title);
-    if (!func) return;
-
-    document.getElementById('modalTitle').textContent = func.title;
-    document.getElementById('modalDescription').innerHTML = func.description;
-    document.getElementById('modalSpeech').textContent = func.speech;
-    document.getElementById('functionModal').classList.remove('hidden');
+    if (!func) {
+        console.error('Function not found:', title);
+        return;
+    }
+    
+    console.log('Found function:', func);
+    
+    const modal = document.getElementById('functionModal');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalDescription = document.getElementById('modalDescription');
+    const modalSpeech = document.getElementById('modalSpeech');
+    
+    if (!modal) {
+        console.error('Modal not found: functionModal');
+        return;
+    }
+    
+    if (!modalTitle) {
+        console.error('Modal title not found: modalTitle');
+        return;
+    }
+    
+    if (!modalDescription) {
+        console.error('Modal description not found: modalDescription');
+        return;
+    }
+    
+    if (!modalSpeech) {
+        console.error('Modal speech not found: modalSpeech');
+        return;
+    }
+    
+    console.log('All modal elements found, updating content...');
+    
+    modalTitle.textContent = func.title;
+    modalDescription.innerHTML = func.description;
+    modalSpeech.textContent = func.speech;
+    
+    console.log('Showing modal...');
+    modal.classList.remove('hidden');
+    
+    console.log('Modal should be visible now');
 }
 
 // Настройка обработчиков событий
