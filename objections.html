@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Возражения - Контур.Фокус</title>
+    <meta name="description" content="База возражений и ответов для продаж Контур.Фокус">
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Кастомные стили -->
+    <link href="./src/css/combined-styles.css" rel="stylesheet">
+</head>
+<body class="bg-gray-50 font-['Inter']">
+    <!-- Навигация -->
+    <nav class="navigation-improved">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-4">
+                <div class="flex items-center space-x-4">
+                    <a href="index.html" class="flex items-center space-x-4">
+                        <img src="./focus.png" alt="Контур.Фокус" class="header-logo">
+                        <div>
+                            <h1 class="header-title">Контур.Фокус</h1>
+                            <p class="header-subtitle">База возражений</p>
+                        </div>
+                    </a>
+                </div>
+                
+                <div class="flex items-center space-x-4">
+                    <div class="search-container">
+                        <input type="text" 
+                               id="searchInput" 
+                               placeholder="Поиск возражений..." 
+                               class="search-input-enhanced">
+                        <svg class="search-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                        </svg>
+                    </div>
+                    
+                    <a href="index.html" class="btn-secondary">
+                        Функции
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Основной контент -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <!-- Статистика -->
+        <div class="grid grid-cols-1 md:grid-cols-6 gap-6 mb-8">
+            <div class="stats-card">
+                <h3 class="text-2xl font-bold text-gray-900">11</h3>
+                <p class="text-gray-600">Секретарь</p>
+            </div>
+            <div class="stats-card">
+                <h3 class="text-2xl font-bold text-gray-900">12</h3>
+                <p class="text-gray-600">Цена</p>
+            </div>
+            <div class="stats-card">
+                <h3 class="text-2xl font-bold text-gray-900">16</h3>
+                <p class="text-gray-600">Потребность</p>
+            </div>
+            <div class="stats-card">
+                <h3 class="text-2xl font-bold text-gray-900">14</h3>
+                <p class="text-gray-600">Продукт</p>
+            </div>
+            <div class="stats-card">
+                <h3 class="text-2xl font-bold text-gray-900">10</h3>
+                <p class="text-gray-600">Конкуренты</p>
+            </div>
+            <div class="stats-card">
+                <h3 class="text-2xl font-bold text-gray-900">9</h3>
+                <p class="text-gray-600">Продление</p>
+            </div>
+        </div>
+
+        <!-- Фильтры -->
+        <div class="flex flex-wrap gap-2 mb-8">
+            <button class="tab-filter active" data-category="all">Все возражения</button>
+            <button class="tab-filter" data-category="secretary">👩‍💼 Секретарь</button>
+            <button class="tab-filter" data-category="price">💰 Цена</button>
+            <button class="tab-filter" data-category="need">❓ Потребность</button>
+            <button class="tab-filter" data-category="product">📦 Продукт</button>
+            <button class="tab-filter" data-category="competitor">⚔️ Конкуренты</button>
+            <button class="tab-filter" data-category="renewal">🔄 Продление</button>
+        </div>
+
+        <!-- Сетка возражений -->
+        <div id="objectionsGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Возражения будут загружены через JavaScript -->
+        </div>
+    </main>
+
+    <!-- FAB для быстрого доступа -->
+    <button class="fab-enhanced" onclick="window.location.href='./index.html'">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
+        </svg>
+    </button>
+
+    <!-- Модальное окно для деталей -->
+    <div id="objectionModal" class="fixed inset-0 z-50 hidden">
+        <div class="absolute inset-0 modal-backdrop"></div>
+        <div class="relative h-full flex items-center justify-center p-4">
+            <div class="modal-content-enhanced bg-white max-w-4xl w-full max-h-[90vh] overflow-hidden">
+                <div class="flex items-center justify-between p-6 border-b border-gray-200">
+                    <h2 id="modalTitle" class="text-xl font-semibold text-gray-900">Название возражения</h2>
+                    <button id="closeModal" class="text-gray-400 hover:text-gray-600 text-2xl transition-colors duration-200">&times;</button>
+                </div>
+                <div class="p-6 overflow-y-auto max-h-[calc(90vh-120px)]">
+                    <div id="modalContent" class="text-gray-700 leading-relaxed"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Скрипты -->
+    <script src="./js/animations.js"></script>
+    <script src="./js/objections.js"></script>
+</body>
+</html>
