@@ -1566,15 +1566,6 @@ function filterByCategory(category) {
     // Обновляем текущую категорию
     currentCategory = category;
     
-    // Обновляем активную вкладку в фильтрах
-    const tabFilters = document.querySelectorAll('.tab-filter');
-    tabFilters.forEach(tab => {
-        tab.classList.remove('active');
-        if (tab.getAttribute('data-category') === category) {
-            tab.classList.add('active');
-        }
-    });
-    
     // Перерисовываем возражения
     renderObjections();
     
@@ -1814,20 +1805,7 @@ function setupEventListeners() {
         });
     }
 
-    // Фильтры по категориям
-    const tabFilters = document.querySelectorAll('.tab-filter');
-    tabFilters.forEach(tab => {
-        tab.addEventListener('click', function() {
-            // Убираем активный класс у всех вкладок
-            tabFilters.forEach(t => t.classList.remove('active'));
-            // Добавляем активный класс к текущей вкладке
-            this.classList.add('active');
-            
-            // Обновляем текущую категорию
-            currentCategory = this.getAttribute('data-category');
-            renderObjections();
-        });
-    });
+
 
     // Закрытие модального окна
     const closeModalBtn = document.getElementById('closeObjectionModal');
