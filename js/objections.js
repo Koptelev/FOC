@@ -1589,7 +1589,7 @@ function renderObjections() {
         
         return `
             <div class="function-card group cursor-pointer hover-lift" 
-                onclick="showObjectionDetail('${obj.title}')"
+                onclick="showObjectionDetail('${obj.title.replace(/'/g, "\\'")}')"
                 data-category="${obj.category}">
                 
                 <!-- Заголовок -->
@@ -1632,19 +1632,51 @@ function highlightSearch(text) {
 
 // Функция показа деталей возражения
 function showObjectionDetail(title) {
+    console.log('showObjectionDetail called with title:', title);
+    
     const objection = objections.find(obj => obj.title === title);
-    if (!objection) return;
-
+    if (!objection) {
+        console.error('Objection not found:', title);
+        return;
+    }
+    
+    console.log('Found objection:', objection);
+    
     const modal = document.getElementById('objectionModal');
     const modalTitle = document.getElementById('modalTitle');
     const modalDescription = document.getElementById('modalDescription');
     const modalAnswer = document.getElementById('modalAnswer');
-
-    if (modalTitle) modalTitle.textContent = objection.title;
-    if (modalDescription) modalDescription.innerHTML = objection.description;
-    if (modalAnswer) modalAnswer.innerHTML = objection.answer;
-
+    
+    if (!modal) {
+        console.error('Modal not found: objectionModal');
+        return;
+    }
+    
+    if (!modalTitle) {
+        console.error('Modal title not found: modalTitle');
+        return;
+    }
+    
+    if (!modalDescription) {
+        console.error('Modal description not found: modalDescription');
+        return;
+    }
+    
+    if (!modalAnswer) {
+        console.error('Modal answer not found: modalAnswer');
+        return;
+    }
+    
+    console.log('All modal elements found, updating content...');
+    
+    modalTitle.textContent = objection.title;
+    modalDescription.innerHTML = objection.description;
+    modalAnswer.innerHTML = objection.answer;
+    
+    console.log('Showing modal...');
     modal.classList.remove('hidden');
+    
+    console.log('Modal should be visible now');
 }
 
 // Функция закрытия модального окна
