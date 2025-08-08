@@ -1561,6 +1561,98 @@ const categoryIcons = {
     renewal: "🔄"
 };
 
+// Функция фильтрации по категории (для карточек статистики)
+function filterByCategory(category) {
+    // Обновляем текущую категорию
+    currentCategory = category;
+    
+    // Обновляем активную вкладку в фильтрах
+    const tabFilters = document.querySelectorAll('.tab-filter');
+    tabFilters.forEach(tab => {
+        tab.classList.remove('active');
+        if (tab.getAttribute('data-category') === category) {
+            tab.classList.add('active');
+        }
+    });
+    
+    // Перерисовываем возражения
+    renderObjections();
+    
+    // Плавная прокрутка к сетке возражений
+    const objectionsGrid = document.getElementById('objectionsGrid');
+    if (objectionsGrid) {
+        objectionsGrid.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+    
+    // Показываем уведомление о фильтрации
+    const categoryNames = {
+        'all': 'Все возражения',
+        'secretary': 'Секретарь',
+        'price': 'Цена',
+        'need': 'Потребность',
+        'product': 'Продукт',
+        'competitor': 'Конкуренты',
+        'renewal': 'Продление'
+    };
+    
+    const categoryName = categoryNames[category] || category;
+    showNotification(`Показаны возражения: ${categoryName}`, 'info');
+}
+
+// Функция показа уведомлений
+function showNotification(message, type = 'success') {
+    // Создаем элемент уведомления
+    const notification = document.createElement('div');
+    notification.className = `fixed top-4 right-4 z-50 p-4 rounded-lg shadow-lg transition-all duration-300 transform translate-x-full`;
+    
+    // Настраиваем стили в зависимости от типа
+    switch(type) {
+        case 'success':
+            notification.className += ' bg-green-500 text-white';
+            break;
+        case 'error':
+            notification.className += ' bg-red-500 text-white';
+            break;
+        case 'info':
+            notification.className += ' bg-blue-500 text-white';
+            break;
+        case 'warning':
+            notification.className += ' bg-yellow-500 text-white';
+            break;
+        default:
+            notification.className += ' bg-gray-500 text-white';
+    }
+    
+    notification.innerHTML = `
+        <div class="flex items-center space-x-2">
+            <span>${message}</span>
+            <button onclick="this.parentElement.parentElement.remove()" class="ml-2 text-white hover:text-gray-200">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+            </button>
+        </div>
+    `;
+    
+    // Добавляем уведомление на страницу
+    document.body.appendChild(notification);
+    
+    // Показываем уведомление
+    setTimeout(() => {
+        notification.classList.remove('translate-x-full');
+    }, 100);
+    
+    // Автоматически скрываем через 3 секунды
+    setTimeout(() => {
+        notification.classList.add('translate-x-full');
+        setTimeout(() => {
+            if (notification.parentElement) {
+                notification.remove();
+            }
+        }, 300);
+    }, 3000);
+}
+
 // Функция рендеринга возражений
 function renderObjections() {
     const grid = document.getElementById('objectionsGrid');
